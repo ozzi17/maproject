@@ -1,8 +1,9 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include "classes.h"
+#include <iostream> 
+#include "paleta.h"
 int main(){
+   Paleta paletas; 
 
-    return 0;
-}
+    paletas.Leitura("cores.txt");
+
+} 
+
