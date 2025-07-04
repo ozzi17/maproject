@@ -36,6 +36,18 @@ class Cor{
 
       arquivo.close();
      }
+
+     Cor ConsultaCor(int value){
+      for (int i = 0; i < 100; i++)
+      {
+        if (value >= valor[i] && value < valor[i+1])
+        {
+          return cores[i];
+        }
+        
+      }
+      
+     }
 };  
 
 
