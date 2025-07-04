@@ -1,3 +1,6 @@
+#ifndef PALETA_H
+#define PALETA_H
+
 #include <fstream>
 #include <iostream>
 
@@ -14,40 +17,46 @@ class Cor{
 
     int quantidade;
     Cor cores[100]; 
-    int valor[100]; 
+    double valor[100]; 
    
      public: 
 
-     void Leitura(std::string nomeArquivo){
+     void Leitura(std::string nomeArquivo)
+     {
         
      std:: ifstream arquivo(nomeArquivo);
   
-     if(!arquivo.is_open()){
+     if(!arquivo.is_open())
+     {
        std::cout << "Erro ao abrir o arquivo!" << std::endl;
      }
-  
-     int N;
 
-     arquivo >> N;
+     arquivo >> quantidade;
 
-     for(int i = 0; i < N; ++i){
+     for(int i = 0; i < quantidade; ++i)
+     {
       arquivo >> valor[i]>> cores[i].R >> cores[i].G >> cores[i].B;
      }
 
       arquivo.close();
      }
 
-     Cor ConsultaCor(int value){
-      for (int i = 0; i < 100; i++)
+     Cor ConsultaCor(double value)
+     {
+      if (quantidade == 0)
+      {
+        return {0, 0, 0};
+      }
+      
+      for (int i = 0; i < quantidade - 1; i++)
       {
         if (value >= valor[i] && value < valor[i+1])
         {
           return cores[i];
         }
-        
       }
-      
+      return cores[quantidade - 1];
      }
-};  
+};
 
-
+#endif
