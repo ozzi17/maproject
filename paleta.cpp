@@ -37,3 +37,13 @@ void Paleta::Leitura(std::string nomeArquivo)
       }
       return cores[quantidade - 1];
     }
+
+    Cor Imagem::consultaPixel(int largura, int altura)
+    {
+      return pixels[largura][altura];
+    }
+
+    void defineCor(int largura, int altura)
+    {
+      //esboço do código p/ definir cor de pixel da coordenada
+    }
