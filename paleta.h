@@ -52,7 +52,9 @@ public:
 
   Cor consultaPixel(int larg, int alt);
 
-  void defineCor(int larg, int alt);
+  void defineCor(int larg, int alt, int r, int g, int b);
+
+  void salvaPPM();
 };
 
 #endif
