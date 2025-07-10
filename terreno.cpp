@@ -45,7 +45,7 @@ void MapaAltitudes::gerarMapa() {
             }
 
             // Reduzir a amplitude
-            amplitude *= rugosidade;
+            amplitude *= log(rugosidade);
             passo /= 2;
         }
     }
@@ -67,6 +67,17 @@ int MapaAltitudes::consultaLinha()
 
 void MapaAltitudes::matrizSsalva()
 {
+    // Normalização dos valores para 0-255
+    int minVal = matriz[0][0], maxVal = matriz[0][0];
+    for (int i = 0; i < tamanho; i++) {
+        for (int j = 0; j < tamanho; j++) {
+            if (matriz[i][j] < minVal) minVal = matriz[i][j];
+            if (matriz[i][j] > maxVal) maxVal = matriz[i][j];
+        }
+    }
+    // Evita divisão por zero
+    float range = (maxVal - minVal) > 0 ? (maxVal - minVal) : 1;
+
     std::ofstream outputFile("Altitudes.ppm");
     if (outputFile.is_open())
     {
@@ -78,11 +89,11 @@ void MapaAltitudes::matrizSsalva()
         {
             for (int j = 0; j < tamanho; j++)
             {
-                outputFile << matriz[i][j] << " ";
+                int norm = static_cast<int>(255.0 * (matriz[i][j] - minVal) / range);
+                outputFile << norm << " ";
             }
             outputFile << std::endl;
         }
-        
     }
     
 }
