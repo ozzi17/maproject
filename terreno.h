@@ -6,23 +6,27 @@
 #include <ctime>
 #include <cmath>
 
-class MapaAltitudes {
+
+class MapaAltitudes 
+{
 private:
     int N;
-    int tamanho;
     float rugosidade;
+    int tamanho;
     int** matriz;
   
-    public: 
+public:
     // Função de inicialização do mapa
     void gerarMapa();
 
     // Construtor da classe
     MapaAltitudes(int N, float rugosidade)
-        : N(N), rugosidade(rugosidade) {
+        : N(N), rugosidade(rugosidade) 
+        {
         tamanho = (1 << N) + 1;  // 2^N + 1
         matriz = new int*[tamanho];
-        for (int i = 0; i < tamanho; ++i) {
+        for (int i = 0; i < tamanho; ++i) 
+        {
             matriz[i] = new int[tamanho]();
         }
 
@@ -31,18 +35,26 @@ private:
     }
 
     // Destruidor da classe
-    ~MapaAltitudes() {
-        for (int i = 0; i < tamanho; ++i) {
+    ~MapaAltitudes() 
+    {
+        for (int i = 0; i < tamanho; ++i) 
+        {
             delete[] matriz[i];
         }
         delete[] matriz;
     }
 
+    int consultaAltitude(int lin, int col);
+
+    int consultaLinha();
+
+    void matrizSsalva();
+
+    void matrizAloca(int size);
+
+    void matrizLibera();
+
+    void matrizLer(std::string& nomeArquivo);
 };
-
-
-
-
-
 
 #endif

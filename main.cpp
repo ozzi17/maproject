@@ -1,7 +1,9 @@
 #include <iostream> 
 #include "paleta.h"
 #include "imagem.h"
+#include "terreno.h"
 int main(){
+   /*
    Paleta paletas; 
 
     //paletas.Leitura("cores.txt");
@@ -18,10 +20,10 @@ int main(){
 
     //std::cout << "digite as coordenadas do pixel: ";
     //std::cin >> consultaa >> consultab;
-    /*std::cout << img.consultaPixel(consultaa, consultab).R << " ";
+    std::cout << img.consultaPixel(consultaa, consultab).R << " ";
     std::cout << img.consultaPixel(consultaa, consultab).G << " ";
     std::cout << img.consultaPixel(consultaa, consultab).B << " ";
-    */
+    
 
     for (int i = 0; i < 33; i++)
     {
@@ -54,6 +56,13 @@ int main(){
     img.salvaPPM();
 
     //img.defineCor(consultaa, consultab, 255, 255, 255);
+    */
 
+    std::cout << "digite o N e a rugosidade: ";
+    int N; std::cin >> N;
+    int rugosidade; std::cin >> rugosidade;
+    MapaAltitudes baubau(N, rugosidade);
+
+    baubau.matrizSsalva();
 } 
 
