@@ -1,5 +1,6 @@
 #include <iostream> 
 #include "paleta.h"
+#include "imagem.h"
 int main(){
    Paleta paletas; 
 
