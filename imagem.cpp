@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "imagem.h"
 #include "paleta.h"
+#include "imagem.h"
 
   
     Cor Imagem::consultaPixel(int largura, int altura)
