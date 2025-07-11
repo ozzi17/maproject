@@ -58,11 +58,18 @@ int main(){
     //img.defineCor(consultaa, consultab, 255, 255, 255);
     */
 
+    Paleta paletas;
+    paletas.Leitura("cores.txt");
+
+    
+
     std::cout << "digite o N e a rugosidade: ";
     int N; std::cin >> N;
     int rugosidade; std::cin >> rugosidade;
     MapaAltitudes baubau(N, rugosidade);
 
     baubau.matrizSsalva();
+
+
 } 
 

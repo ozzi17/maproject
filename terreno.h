@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include "paleta.h"
+#include "imagem.h"
 
 
 class MapaAltitudes 
@@ -55,6 +57,8 @@ public:
     void matrizLibera();
 
     void matrizLer(std::string& nomeArquivo);
+
+    Imagem retornaImg(Paleta a);
 };
 
 #endif

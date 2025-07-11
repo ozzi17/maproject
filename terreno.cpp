@@ -69,8 +69,10 @@ void MapaAltitudes::matrizSsalva()
 {
     // Normalização dos valores para 0-255
     int minVal = matriz[0][0], maxVal = matriz[0][0];
-    for (int i = 0; i < tamanho; i++) {
-        for (int j = 0; j < tamanho; j++) {
+    for (int i = 0; i < tamanho; i++) 
+    {
+        for (int j = 0; j < tamanho; j++) 
+        {
             if (matriz[i][j] < minVal) minVal = matriz[i][j];
             if (matriz[i][j] > maxVal) maxVal = matriz[i][j];
         }
@@ -103,7 +105,8 @@ void MapaAltitudes::matrizAloca(int size)
     tamanho = size;
 
     matriz = new int*[tamanho];
-    for (int i = 0; i < tamanho; ++i) {
+    for (int i = 0; i < tamanho; ++i) 
+    {
         matriz[i] = new int[tamanho];
     }
 }
@@ -111,7 +114,8 @@ void MapaAltitudes::matrizAloca(int size)
 void MapaAltitudes::matrizLibera()
 {
     if (matriz != nullptr) {
-        for (int i = 0; i < tamanho; ++i) {
+        for (int i = 0; i < tamanho; ++i) 
+        {
             delete[] matriz[i];
         }
         delete[] matriz;
@@ -129,10 +133,17 @@ void MapaAltitudes::matrizLer(std::string& nomeArquivo)
     matrizLibera();
     matrizAloca(nLinhas);
 
-    for (int i = 0; i < nLinhas; ++i) {
-        for (int j = 0; j < nColunas; ++j) {
+    for (int i = 0; i < nLinhas; ++i) 
+    {
+        for (int j = 0; j < nColunas; ++j) 
+        {
             arquivo >> matriz[i][j];
         }
     }
 
+}
+
+Imagem MapaAltitudes::retornaImg(Paleta paletas)
+{
+    
 }
