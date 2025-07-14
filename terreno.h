@@ -58,7 +58,7 @@ public:
 
     void matrizLer(std::string& nomeArquivo);
 
-    Imagem retornaImg(Paleta a);
+    Imagem retornaImg(Paleta paletas);
 };
 
 #endif

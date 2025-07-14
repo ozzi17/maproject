@@ -22,11 +22,11 @@
       if (outputFile.is_open())
       {
         outputFile << "P3" << std::endl;
-        outputFile << "100 100" << std::endl;
+        outputFile << larg << " " << alt << std::endl;
         outputFile << "255" << std::endl;
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < larg; i++)
         {
-          for (int j = 0; j < 100; j++)
+          for (int j = 0; j < alt; j++)
           {
             outputFile << pixels[i][j].R << " " << pixels[i][j].G << " " << pixels[i][j].B << std::endl;
           }

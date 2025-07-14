@@ -16,10 +16,12 @@ public:
   Imagem(int largura, int altura) : larg(largura), alt(altura) {
     pixels = new Cor*[larg];
     for (int i = 0; i < larg; ++i) {
-      pixels[i] = new Cor[alt];
-      pixels[i]->R = 0;
-      pixels[i]->B = 0;
-      pixels[i]->G = 0;
+        pixels[i] = new Cor[alt];
+        for (int j = 0; j < alt; ++j) {
+            pixels[i][j].R = 0;
+            pixels[i][j].G = 0;
+            pixels[i][j].B = 0;
+        }
     }
   }
 

@@ -145,5 +145,16 @@ void MapaAltitudes::matrizLer(std::string& nomeArquivo)
 
 Imagem MapaAltitudes::retornaImg(Paleta paletas)
 {
+    Imagem relevo(tamanho, tamanho);
+    for (int i = 0; i < tamanho; i++)
+    {
+        for (int j = 0; j < tamanho; j++)
+        {
+            relevo.defineCor(i, j, paletas.ConsultaCor(matriz[i][j]).R, paletas.ConsultaCor(matriz[i][j]).G, 
+            paletas.ConsultaCor(matriz[i][j]).B);
+        }
+        
+    }
     
+    return relevo;
 }

@@ -58,17 +58,25 @@ int main(){
     //img.defineCor(consultaa, consultab, 255, 255, 255);
     */
 
+   
+    std::string nomeArquivo;
+    std::cout << "digite o nome do arquivo a ser lido: " << std::endl;
+    getline(std::cin, nomeArquivo);
+    std::cout << "digite o N e a rugosidade: ";
+    int N; std::cin >> N;
+    double rugosidade; std::cin >> rugosidade;
+    MapaAltitudes baubau(N, rugosidade);
+   
     Paleta paletas;
-    paletas.Leitura("cores.txt");
+    paletas.Leitura(nomeArquivo);
+
+    
+    Imagem img = baubau.retornaImg(paletas);
+    img.salvaPPM();
 
     
 
-    std::cout << "digite o N e a rugosidade: ";
-    int N; std::cin >> N;
-    int rugosidade; std::cin >> rugosidade;
-    MapaAltitudes baubau(N, rugosidade);
-
-    baubau.matrizSsalva();
+    //baubau.matrizSsalva();
 
 
 } 
