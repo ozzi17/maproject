@@ -150,8 +150,16 @@ Imagem MapaAltitudes::retornaImg(Paleta paletas)
     {
         for (int j = 0; j < tamanho; j++)
         {
+            if(i > 0 && j > 0 && matriz[i][j] < matriz[i-1][j-1]){
+
+                relevo.defineCor(i, j, paletas.ConsultaCor(matriz[i][j]).R*0.5, paletas.ConsultaCor(matriz[i][j]).G*0.5, 
+                paletas.ConsultaCor(matriz[i][j]).B*0.5);
+            } 
+            else 
+            {
             relevo.defineCor(i, j, paletas.ConsultaCor(matriz[i][j]).R, paletas.ConsultaCor(matriz[i][j]).G, 
             paletas.ConsultaCor(matriz[i][j]).B);
+            }
         }
         
     }
