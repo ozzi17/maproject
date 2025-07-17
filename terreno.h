@@ -46,17 +46,11 @@ public:
         delete[] matriz;
     }
 
-    int consultaAltitude(int lin, int col);
+    /*
+    salva a matriz de alturas em um arquivo ppm em tons de cinza
+    @param */
 
-    int consultaLinha();
 
-    void matrizSsalva();
-
-    void matrizAloca(int size);
-
-    void matrizLibera();
-
-    void matrizLer(std::string& nomeArquivo);
 
     Imagem retornaImg(Paleta paletas);
 };

@@ -50,99 +50,6 @@ void MapaAltitudes::gerarMapa() {
         }
     }
 
-
-int MapaAltitudes::consultaAltitude(int lin, int col)
-{
-    if (lin >= 0 && lin < tamanho && col >= 0 && col < tamanho)
-    {
-        return matriz[lin][col];
-    }
-    return 1;
-}
-
-int MapaAltitudes::consultaLinha()
-{
-    return tamanho;
-}
-
-void MapaAltitudes::matrizSsalva()
-{
-    // Normalização dos valores para 0-255
-    int minVal = matriz[0][0], maxVal = matriz[0][0];
-    for (int i = 0; i < tamanho; i++) 
-    {
-        for (int j = 0; j < tamanho; j++) 
-        {
-            if (matriz[i][j] < minVal) minVal = matriz[i][j];
-            if (matriz[i][j] > maxVal) maxVal = matriz[i][j];
-        }
-    }
-    // Evita divisão por zero
-    float range = (maxVal - minVal) > 0 ? (maxVal - minVal) : 1;
-
-    std::ofstream outputFile("Altitudes.ppm");
-    if (outputFile.is_open())
-    {
-        outputFile << "P2" << std::endl;
-        outputFile << tamanho << " " << tamanho << std::endl;
-        outputFile << "255" << std::endl;
-
-        for (int i = 0; i < tamanho; i++)
-        {
-            for (int j = 0; j < tamanho; j++)
-            {
-                int norm = static_cast<int>(255.0 * (matriz[i][j] - minVal) / range);
-                outputFile << norm << " ";
-            }
-            outputFile << std::endl;
-        }
-    }
-    
-}
-
-void MapaAltitudes::matrizAloca(int size)
-{
-    tamanho = size;
-
-    matriz = new int*[tamanho];
-    for (int i = 0; i < tamanho; ++i) 
-    {
-        matriz[i] = new int[tamanho];
-    }
-}
-
-void MapaAltitudes::matrizLibera()
-{
-    if (matriz != nullptr) {
-        for (int i = 0; i < tamanho; ++i) 
-        {
-            delete[] matriz[i];
-        }
-        delete[] matriz;
-        matriz = nullptr;
-        tamanho = 0;
-    }
-}
-
-void MapaAltitudes::matrizLer(std::string& nomeArquivo)
-{
-    std::ifstream arquivo(nomeArquivo);
-    int nLinhas, nColunas;
-    arquivo >> nLinhas >> nColunas;
-
-    matrizLibera();
-    matrizAloca(nLinhas);
-
-    for (int i = 0; i < nLinhas; ++i) 
-    {
-        for (int j = 0; j < nColunas; ++j) 
-        {
-            arquivo >> matriz[i][j];
-        }
-    }
-
-}
-
 Imagem MapaAltitudes::retornaImg(Paleta paletas)
 {
     Imagem relevo(tamanho, tamanho);
@@ -150,7 +57,8 @@ Imagem MapaAltitudes::retornaImg(Paleta paletas)
     {
         for (int j = 0; j < tamanho; j++)
         {
-            if(i > 0 && j > 0 && matriz[i][j] < matriz[i-1][j-1]){
+            if(i > 0 && j > 0 && matriz[i][j] < matriz[i-1][j-1])
+            {
 
                 relevo.defineCor(i, j, paletas.ConsultaCor(matriz[i][j]).R*0.5, paletas.ConsultaCor(matriz[i][j]).G*0.5, 
                 paletas.ConsultaCor(matriz[i][j]).B*0.5);

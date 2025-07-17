@@ -18,7 +18,7 @@
 
     void Imagem::salvaPPM()
     {
-      std::ofstream outputFile("teste.ppm");
+      std::ofstream outputFile("figura.ppm");
       if (outputFile.is_open())
       {
         outputFile << "P3" << std::endl;
